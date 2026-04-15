@@ -9,3 +9,8 @@ $user = "root";
 $password ="MinhaSenhaSegura123";
 
 $pdo = new PDO($dsn, $user, $password);
+
+$statement = $pdo->prepare("select * from posts");
+$statement->execute();
+
+$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
