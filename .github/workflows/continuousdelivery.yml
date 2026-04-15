@@ -1,0 +1,19 @@
+name: Continuous Delivery
+on:
+  push:
+    branches:
+      - main
+jobs:
+  delivery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Simulando Cotinuous Delivery
+      - uses: actions/upload-artifact@v7
+        with:
+          name: index.zip
+          path: |
+            index.php
+            README.md

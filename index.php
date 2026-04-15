@@ -2,11 +2,13 @@
 
 require "functions.php";
 
+loadEnv(__DIR__ . '/.env');
+
 // Connect do MySQL database
 
-$dsn = "mysql:host=localhost;port=3306;dbname=devops_pucpr;charset=utf8";
-$user = "root";
-$password ="MinhaSenhaSegura123";
+$dsn = "mysql:host=" . getenv('DB_HOST') . ";port=3306;dbname=" . getenv('DB_NAME') . ";charset=utf8";
+$user = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
 
 try {
     $pdo = new PDO($dsn, $user, $password);
