@@ -24,6 +24,6 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: index.php
+          name: index.zip
       - name: Display structure of downloaded files
         run: ls -R
