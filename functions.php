@@ -11,9 +11,23 @@ function loadEnv($path)
 
 function dd($value)
 {
+    echo dump_to_string($value);
+    die();
+}
+
+function dump_to_string($value): string 
+{
+    ob_start();
     echo "<pre>";
     var_dump($value);
     echo "</pre>";
+    return ob_get_clean();
+}
 
-    die();
+function build_dsn(string $host, string $dbName, int $port = 3306): string
+{
+    if ($host === '') {
+        throw new InvalidArgumentException('Host cannot be empty');
+    }
+    return "mysql:host={$host};port={$port};dbname={$dbName};charset=utf8";
 }
