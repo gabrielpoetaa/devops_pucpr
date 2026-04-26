@@ -1,2 +1,4 @@
 .claude/*
 .env
+/vendor/
+ /.phpunit.cache/

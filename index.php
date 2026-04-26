@@ -6,7 +6,7 @@ loadEnv(__DIR__ . '/.env');
 
 // Connect do MySQL database
 
-$dsn = "mysql:host=" . getenv('DB_HOST') . ";port=3306;dbname=" . getenv('DB_NAME') . ";charset=utf8";
+$dsn = build_dsn(getenv('DB_HOST'), getenv('DB_NAME')); 
 $user = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
 
