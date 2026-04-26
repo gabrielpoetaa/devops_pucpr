@@ -12,12 +12,14 @@ jobs:
 
   discord:
     runs-on: ubuntu-latest
+    needs: build
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: Sniddl/discord-commits@v1.8
+      - name: Discord notification
+        uses: sarisia/actions-status-discord@v1
+        if: always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          template: "avatar-with-link"
-          include-extras: true
+          status: ${{ job.status }}
+          title: "CI - Pull Request"
+          description: "Build finalizado para PR na branch main"
+          color: ${{ job.status == 'success' && '0x00ff00' || '0xff0000' }}
